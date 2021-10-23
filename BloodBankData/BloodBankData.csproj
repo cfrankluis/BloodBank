@@ -54,7 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Blood.cs" />
+    <Compile Include="BloodOrder.cs" />
+    <Compile Include="BloodTable.cs" />
+    <Compile Include="Donor.cs" />
+    <Compile Include="DonorAppointment.cs" />
+    <Compile Include="Patient.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
