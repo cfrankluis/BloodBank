@@ -16,7 +16,7 @@ namespace BloodBankData
         public DateTime Date { get; set; }
 
         [ForeignKey(nameof(Donor))]
-        public int DonorID { get; set; }
+        public Guid DonorID { get; set; }
         public virtual Donor Donor { get; set; }
 
     }

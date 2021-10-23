@@ -23,8 +23,10 @@ namespace BloodBankData
         public BloodType BloodType { get; set; }
         public virtual BloodTable BloodTable { get; set; }
 
-        public string FullName { get { return FirstName + " " + LastName; } }
-        
+        public string FullName { get { return FirstName + " " + LastName; } private set { } }
+
+        public DateTime CheckInDate { get; set; }
+
         public int Age { 
             get 
             {
@@ -32,7 +34,9 @@ namespace BloodBankData
                     return DateTime.Now.Year - BirthDate.Year;
                 else
                     return DateTime.Now.Year - BirthDate.Year - 1;
-            } 
+            }
+
+            private set { }
         }
     }
 }
