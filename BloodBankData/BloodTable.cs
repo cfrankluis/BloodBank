@@ -18,10 +18,40 @@ namespace BloodBankData
         Op,
         On,
     }
+
     public class BloodTable
     {
         [Key]
         public BloodType Type { get; set; }
+
+        public string BloodValue
+        {
+            get
+            {
+                switch (Type)
+                {
+                    case BloodType.Ap:
+                        return "A+";
+                    case BloodType.An:
+                        return "A-";
+                    case BloodType.Bp:
+                        return "B+";
+                    case BloodType.Bn:
+                        return "B-";
+                    case BloodType.ABp:
+                        return "AB+";
+                    case BloodType.ABn:
+                        return "AB-";
+                    case BloodType.Op:
+                        return "O+";
+                    case BloodType.On:
+                        return "O-";
+                    default:
+                        return "Other";
+                }
+            }
+            private set { }
+        }
 
         public virtual IEnumerable<Patient> Patients { get; set; } = new List<Patient>();
         public virtual IEnumerable<Donor> Donors { get; set; } = new List<Donor>();

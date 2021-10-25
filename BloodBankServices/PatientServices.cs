@@ -49,5 +49,70 @@ namespace BloodBankServices
                 return query.ToArray();
             }
         }
+
+        public PatientDetail GetPatientByID(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Patients
+                    .SingleOrDefault(e => e.ID == id);
+
+                if (entity is null)
+                    return null;
+
+                return
+                    new PatientDetail()
+                    {
+                        PatientID = entity.ID,
+                        FirstName = entity.FirstName,
+                        LastName = entity.LastName,
+                        Age = entity.Age,
+                        BloodType = entity.BloodType,
+                        BirthDate = entity.BirthDate,
+                        CheckInDate = entity.CheckInDate
+                    };
+            }
+        }
+
+        public bool UpdatePatient(PatientEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = 
+                    ctx
+                    .Patients
+                    .SingleOrDefault(e => e.ID == model.PatientID);
+
+                if (entity is null)
+                    return false;
+
+                entity.FirstName = model.FirstName;
+                entity.LastName = model.LastName;
+                entity.BloodType = model.BloodType;
+                entity.BirthDate = model.BirthDate;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeletePatient(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Patients
+                    .SingleOrDefault(e => e.ID == id);
+
+                if (entity is null)
+                    return false;
+
+
+                ctx.Patients.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

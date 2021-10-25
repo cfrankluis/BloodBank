@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Patient\PatientCreate.cs" />
+    <Compile Include="Patient\PatientDetail.cs" />
+    <Compile Include="Patient\PatientEdit.cs" />
     <Compile Include="Patient\PatientListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
